@@ -1,0 +1,67 @@
+Iam Policy JSON format:
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<s3 bucket url>",
+                "arn:aws:s3:::<s3 bucket url>/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetObject",
+                "s3:GetBucketLocation",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<s3 bucket url>",
+                "arn:aws:s3:::<s3 bucket url>/*"
+            ]
+        }
+    ]
+}
+
+Explanation:
+
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<s3 bucket url>",
+                "arn:aws:s3:::<s3 bucket url>/*"
+            ]
+This code here is applying an "Allow" is granting permission to the Action s3:ListBucket, s3:ListBucket allows you to list the objects inside the s3 bucket, not a necessary policy, but it's nice to have in case you want to verify that you've imported the right bucket.
+
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetBucketLocation",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<s3 bucket url>",
+                "arn:aws:s3:::<s3 bucket url>/*"
+            ]
+This code grants permission to:
+
+GetObject: allows you to retrieve data from items inside the s3 bucket
+GetBucketLocation: allows you to see where the s3 bucket is located
+PutObject: allows you to upload files to the s3 bucket
+PutObkectACl: Allows you to control the access control list (ACL) of items in the bucket
+DeleteObject: Allows you to delete objects from the bucket.
+
+
+
